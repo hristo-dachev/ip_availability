@@ -48,7 +48,9 @@ public class CommandHandler {
 	}
 	
 	public String logout(String[] line){
-		
+		if(users.containsKey(line[1])){
+			return users.get(line[1]).logout();
+		}else return "error:notlogged";
 	}
 	
 	public String info(String[] line){
