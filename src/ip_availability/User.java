@@ -16,11 +16,14 @@ public class User {
 	}
 	
 	public String login(){
-		
+		this.isLogged = true;
+		this.loginCounter++;
+		return "ok";
 	}
 	
 	public String logout(){
-		
+		this.isLogged = false;
+		return "ok";
 	}
 	
 }
