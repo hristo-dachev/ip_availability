@@ -15,6 +15,10 @@ public class User {
 		this.usedSocket = socket;
 	}
 	
+	public boolean getIsLogged() {
+		return this.isLogged;
+	}
+	
 	public String login(){
 		this.isLogged = true;
 		this.loginCounter++;
