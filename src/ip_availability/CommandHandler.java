@@ -12,27 +12,47 @@ public class CommandHandler {
 		this.socket = socket;
 	}
 	
-	public void start(){
+	public String start(String[] line){
 		//switch
+		switch (line[0]) {
+		case "login":
+			return this.login(line);
+			break;
+		case "logout":
+			return this.logout(line);
+			break;
+		case "info":
+			return this.info(line);
+			break;
+		case "listavaliable":
+			return this.listavaliable(line);
+			break;
+		case "shutdown":
+			//stop server
+			break;
+		default:
+			return "error:unknown command";
+			break;
+		}
 	}
 		
 	public String[] parse(String input) {
 		return input.split(":");
 	}
 	
-	public String login(){
+	public String login(String[] line){
 		
 	}
 	
-	public String logout(){
+	public String logout(String[] line){
 		
 	}
 	
-	public String info(){
+	public String info(String[] line){
 		
 	}
 	
-	public String listavaliable(){
+	public String listavaliable(String[] line){
 		
 	}
 }
