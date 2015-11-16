@@ -2,12 +2,17 @@ package ip_availability;
 
 import java.io.IOException;
 import java.net.Socket;
+import java.util.HashMap;
+import java.util.Map;
+
+
 
 
 
 
 public class CommandHandler {
 	private Socket socket;
+	private Map<String, User> users = new HashMap<String, User>();
 	
 	public CommandHandler(Socket socket) {
 		this.socket = socket;
@@ -36,7 +41,10 @@ public class CommandHandler {
 	}
 	
 	public String login(String[] line){
-		
+		if(!users.containsKey(line[1])){
+			users.put(line[1], new User(line[1], socket));
+		}
+		return users.get(line[1]).login();
 	}
 	
 	public String logout(String[] line){
