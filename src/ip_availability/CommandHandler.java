@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
+
 
 
 
@@ -58,6 +60,13 @@ public class CommandHandler {
 	}
 	
 	public String listavaliable(String[] line){
-		
+		if(users.containsKey(line[1])) {
+			String string = "ok";
+			for (Entry<String, User> entry : users.entrySet()) {
+			    if(entry.getValue().getIsLogged()) 
+			    	string += ":" + entry.getKey();
+			}
+			return string;
+		} return "error:notlogged";
 	}
 }
