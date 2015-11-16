@@ -1,5 +1,6 @@
 package ip_availability;
 
+import java.io.IOException;
 import java.net.Socket;
 
 
@@ -12,27 +13,21 @@ public class CommandHandler {
 		this.socket = socket;
 	}
 	
-	public String start(String[] line){
+	public String start(String[] line, Server server) throws IOException{
 		//switch
 		switch (line[0]) {
 		case "login":
 			return this.login(line);
-			break;
 		case "logout":
 			return this.logout(line);
-			break;
 		case "info":
 			return this.info(line);
-			break;
 		case "listavaliable":
 			return this.listavaliable(line);
-			break;
 		case "shutdown":
-			//stop server
-			break;
+			server.stopServer();
 		default:
 			return "error:unknown command";
-			break;
 		}
 	}
 		
