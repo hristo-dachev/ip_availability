@@ -37,8 +37,9 @@ public class Server {
 		serverSocket.close();
 		serverSocket = null;
 		
-		for (Client next : clients){}
-			//stop client
+		for (Client next : clients){
+			next.stopClient();
+		}
 	}
 	
 	public synchronized boolean isRunning() {
