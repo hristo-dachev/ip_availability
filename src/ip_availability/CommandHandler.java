@@ -56,7 +56,9 @@ public class CommandHandler {
 	}
 	
 	public String info(String[] line){
-		
+		if(users.containsKey(line[1])){
+			return users.get(line[1]).info();
+		}else return "error:noinfo";
 	}
 	
 	public String listavaliable(String[] line){
