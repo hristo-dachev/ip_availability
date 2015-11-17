@@ -30,4 +30,10 @@ public class User {
 		return "ok";
 	}
 	
+	public String info(){
+		StringBuilder info = new StringBuilder();
+		info.append("ok:" + this.username + ":"	+ this.isLogged	+ ":" + this.loginCounter);
+		return info.toString();
+	}
+	
 }
