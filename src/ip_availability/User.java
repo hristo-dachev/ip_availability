@@ -6,13 +6,11 @@ public class User {
 	private String username;
 	private Integer loginCounter;
 	private boolean isLogged;
-	private Socket usedSocket;
 	
 	public User(String username, Socket socket) {
 		this.username = username;
 		this.loginCounter = 0;
 		this.isLogged = false;
-		this.usedSocket = socket;
 	}
 	
 	public boolean getIsLogged() {
@@ -20,12 +18,14 @@ public class User {
 	}
 	
 	public String login(){
+		if(this.isLogged) return "error:alreadylogged";
 		this.isLogged = true;
 		this.loginCounter++;
 		return "ok";
 	}
 	
 	public String logout(){
+		if(!this.isLogged) return "error:notlogged";
 		this.isLogged = false;
 		return "ok";
 	}
