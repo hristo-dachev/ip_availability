@@ -9,9 +9,6 @@ import java.util.Map.Entry;
 
 
 
-
-
-
 public class CommandHandler {
 	private Socket socket;
 	private Map<String, User> users = new HashMap<String, User>();
@@ -31,6 +28,8 @@ public class CommandHandler {
 			return this.info(line);
 		case "listavaliable":
 			return this.listavaliable(line);
+		case "listabsent":
+			return this.listabsent(line);
 		case "shutdown":
 			server.stopServer();
 		default:
@@ -67,6 +66,16 @@ public class CommandHandler {
 			for (Entry<String, User> entry : users.entrySet()) {
 			    if(entry.getValue().getIsLogged()) 
 			    	string += ":" + entry.getKey();
+			}
+			return string;
+		} return "error:notlogged";
+	}
+	
+	public String listabsent(String[] line){
+		if(users.containsKey(line[1])) {
+			String string = "ok";
+			for (Entry<String, User> entry : users.entrySet()) {
+			    if(!entry.getValue().getIsLogged()) string += ":" + entry.getKey();
 			}
 			return string;
 		} return "error:notlogged";
