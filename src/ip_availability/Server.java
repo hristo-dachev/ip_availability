@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 
+
 public class Server {
 	private final Integer port;
 	private ServerSocket serverSocket;
@@ -22,9 +23,9 @@ public class Server {
 		
 		this.serverSocket = new ServerSocket(port);
 		
-		while(isRunning())
-			//create client thread
-		
+		while(isRunning()){
+			new Thread(new Client(serverSocket.accept(), this)).start();
+		}
 		serverSocket.close();
 	}
 	
